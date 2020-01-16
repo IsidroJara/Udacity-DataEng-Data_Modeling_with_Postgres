@@ -1,4 +1,5 @@
-# Udacity-DataEng-Data_Modeling_with_Postgres
+# Udacity - Data Engineering nanodegree
+## First project: Data Modeling with_Postgres
 Solution for the first project of the Udacity nanodegree Data Engineering
 
 ### Setup / Deployment
