@@ -5,14 +5,14 @@ Solution for the first project of the Udacity nanodegree Data Engineering
 
   - Execute the following commands to get the tables created and insert data
   ```sh
-  $ python create_table.py
+  $ python sql_queries.py
   $ python etl.py
   ```
   
 
 ### Check result
 
-  - Execute the foilowing command after the setup to get statistics
+  - Run the cells of the following Notebook to get some statistics:
   ```sh
   $ python test.py
   ```
