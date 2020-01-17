@@ -6,19 +6,34 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """Read song files from a path and write them into postgres 'songs' and 'artists' tables.
+
+    Keyword arguments:
+    cur -- cursor to execute code
+    filepath -- path where the files are allocated
+    """
+    
     # open song file
     df = pd.read_json(filepath, lines=True)
     
     # insert song record
-    song_data = list((df.values[0][7], df.values[0][8], df.values[0][0], df.values[0][9], df.values[0][5]))
+    song_data = df[['song_id', 'title', 'artist_id', 'year', 'duration']].values[0].tolist()
     cur.execute(song_table_insert, song_data)
     
     # insert artist record
-    artist_data = list((df.values[0][0], df.values[0][4], df.values[0][2], df.values[0][1], df.values[0][3]))
+    artist_data = df[['artist_id', 'artist_name', 'artist_location', 'artist_latitude', 'artist_longitude']].values[0].tolist()
     cur.execute(artist_table_insert, artist_data)
 
 
 def process_log_file(cur, filepath):
+    """Read log files from a path and write them into postgres 'users' and 'time' tables.
+    Insert data into 'songplay' table by joining with other tables
+
+    Keyword arguments:
+    cur -- cursor to execute code
+    filepath -- path where the files are allocated
+    """
+    
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -27,7 +42,7 @@ def process_log_file(cur, filepath):
 
     # convert timestamp column to datetime
     t = df
-    t['t'] = pd.to_datetime(df['ts'], unit='ns')
+    t['t'] = pd.to_datetime(df['ts'], unit='ms')
     
     # insert time data records
     time_data = t['ts'], t['t'].dt.hour, t['t'].dt.day, t['t'].dt.week, t['t'].dt.month, t['t'].dt.year, t['t'].dt.weekday
@@ -65,6 +80,14 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """Data processing
+
+    Keyword arguments:
+    cur -- cursor to execute code
+    conn -- Connection
+    filepath -- path where the files are allocated
+    func -- function to be executed
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
