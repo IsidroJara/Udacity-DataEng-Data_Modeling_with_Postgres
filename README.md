@@ -2,6 +2,8 @@
 ## First project: Data Modeling with_Postgres
 Solution for the first project of the Udacity nanodegree Data Engineering
 
+![Alt text](pictures/architecture.png?raw=true "Title")
+
 ### Setup / Deployment
 
   - Execute the following commands to get the tables created and insert data
