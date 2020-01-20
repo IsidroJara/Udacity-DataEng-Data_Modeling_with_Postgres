@@ -2,7 +2,7 @@
 ## First project: Data Modeling with_Postgres
 Solution for the first project of the Udacity nanodegree Data Engineering
 
-![Alt text](pictures/architecture.png?raw=true "Title")
+<img src="https://github.com/IsidroJara/Udacity-DataEng-Data_Modeling_with_Postgres/blob/master/pictures/architecture.png" width="250" height="250" align="center">
 
 ### Setup / Deployment
 
