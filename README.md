@@ -1,5 +1,5 @@
 # Udacity - Data Engineering nanodegree
-## First project: Data Modeling with_Postgres
+## First project: Data Modeling with Postgres
 Solution for the first project of the Udacity nanodegree Data Engineering.
 
 Database architcture:
